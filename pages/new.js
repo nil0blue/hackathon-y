@@ -53,9 +53,23 @@ export default class extends React.Component {
             
             <Pane marginBottom={20}>
               <Label htmlFor="user" marginBottom={5} display="block">
-                User
+                User ID
               </Label>
               <TextInput id="user" defaultValue="Arthur" width="100%" />
+            </Pane>
+
+            <Pane marginBottom={20}>
+              <Label htmlFor="transactionId" marginBottom={5} display="block">
+                Transaction ID
+              </Label>
+              <TextInput id="transactionId" defaultValue="123" width="100%" />
+            </Pane>
+
+            <Pane marginBottom={20}>
+              <Label htmlFor="timestamp" marginBottom={5} display="block">
+                Timestamp
+              </Label>
+              <TextInput id="timestamp" defaultValue={new Date().toISOString()} width="100%" />
             </Pane>
 
             <Pane>
