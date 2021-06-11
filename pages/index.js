@@ -2,6 +2,7 @@ import React from 'react'
 import Fuse from 'fuse.js'
 import Head from 'next/head'
 import { Table } from 'evergreen-ui'
+import Navbar from '../components/Navbar'
 
 export async function getStaticProps() {
   const req = await fetch('http://localhost:3000/api/test')
@@ -51,6 +52,8 @@ export default class extends React.Component {
         <Head>
           <title>Hackathon</title>
         </Head>
+
+        <Navbar selected="List Events" />
 
         <div>
           <Table>

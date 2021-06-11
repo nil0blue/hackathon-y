@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import { Pane, Label, TextInput, Button, Select, toaster } from 'evergreen-ui'
+import Navbar from '../components/Navbar'
 
 export default class extends React.Component {
   async save(e) {
@@ -14,6 +15,8 @@ export default class extends React.Component {
         <Head>
           <title>New Event</title>
         </Head>
+
+        <Navbar selected="New Event" />
 
         <div style={{ maxWidth: '400px', margin: 'auto' }}>
           <form onSubmit={this.save.bind(this)}>
