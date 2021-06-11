@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "hackathon-y",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build"
+  },
+  "dependencies": {
+    "next": "^10.2.3",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  }
+}
