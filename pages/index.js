@@ -24,7 +24,7 @@ export default class extends React.Component {
 
     this.fuse = new Fuse(this.props.rawEvents, {
       threshold: 0.3,
-      keys: ['id', 'type', 'user']
+      keys: ['id', 'type', 'userId', 'transactionId']
     })
   }
 
@@ -48,7 +48,7 @@ export default class extends React.Component {
       : this.props.rawEvents
 
     return (
-      <div style={{ maxWidth: '800px', margin: 'auto' }}>
+      <div style={{ maxWidth: '960px', margin: 'auto' }}>
         <Head>
           <title>Hackathon</title>
         </Head>
@@ -63,10 +63,11 @@ export default class extends React.Component {
                 value={this.state.searchQuery}
               />
               <Table.TextHeaderCell>Type</Table.TextHeaderCell>
-              <Table.TextHeaderCell>User</Table.TextHeaderCell>
-              <Table.TextHeaderCell>Created At</Table.TextHeaderCell>
+              <Table.TextHeaderCell>User ID</Table.TextHeaderCell>
+              <Table.TextHeaderCell>Transaction ID</Table.TextHeaderCell>
+              <Table.TextHeaderCell>Timestamp</Table.TextHeaderCell>
             </Table.Head>
-            <Table.VirtualBody height={800}>
+            <Table.VirtualBody height={500}>
               {events.map(event => {
                 return <Table.Row key={event.id}>
                   <Table.TextCell>
@@ -76,10 +77,13 @@ export default class extends React.Component {
                     {event.type}
                   </Table.TextCell>
                   <Table.TextCell>
-                    {event.user}
+                    {event.userId}
                   </Table.TextCell>
                   <Table.TextCell>
-                    {event.timestamp}
+                    {event.transactionId}
+                  </Table.TextCell>
+                  <Table.TextCell>
+                    {event.timeStamp}
                   </Table.TextCell>
                 </Table.Row>
               })}
