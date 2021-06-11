@@ -1,8 +1,6 @@
-export const create = async () => {
+export default function handler(req, res) {
   if (req.method === 'POST') {
-    const  = req.body;
-    // Process a POST request
-    res.status(200);
+    res.status(200).json(req.body)
   } else {
     res.status(404);
   }

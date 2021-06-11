@@ -6,7 +6,26 @@ import Navbar from '../components/Navbar'
 export default class extends React.Component {
   async save(e) {
     e.preventDefault()
-    toaster.success('Event added!')
+
+    const data = {
+      type: e.target.type.value,
+      user: e.target.user.value,
+    }
+
+    try {
+      await fetch('http://localhost:3000/api/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      })
+
+      toaster.success('Event added!')
+    }
+    catch(e) {
+      toaster.danger(e.message)
+    }
   }
 
   render() {
@@ -36,7 +55,7 @@ export default class extends React.Component {
               <Label htmlFor="user" marginBottom={5} display="block">
                 User
               </Label>
-              <TextInput id="user" width="100%" />
+              <TextInput id="user" defaultValue="Arthur" width="100%" />
             </Pane>
 
             <Pane>

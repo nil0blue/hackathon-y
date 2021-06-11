@@ -5,7 +5,7 @@ import { Table } from 'evergreen-ui'
 import Navbar from '../components/Navbar'
 
 export async function getStaticProps() {
-  const req = await fetch('http://localhost:3000/api/test')
+  const req = await fetch('http://localhost:3000/api/list')
   const rawEvents = await req.json()
 
   return { props: { rawEvents } }
@@ -48,7 +48,7 @@ export default class extends React.Component {
       : this.props.rawEvents
 
     return (
-      <div style={{ maxWidth: '1440px', margin: 'auto' }}>
+      <div style={{ maxWidth: '800px', margin: 'auto' }}>
         <Head>
           <title>Hackathon</title>
         </Head>
