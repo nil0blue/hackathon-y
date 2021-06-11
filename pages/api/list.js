@@ -1,27 +1,9 @@
-// import db from '../../helpers/db';
+import db from '../../helpers/db';
 
-const fake = [
-  {
-    id: '1',
-    type: 'create',
-    user: 'Jared',
-    timestamp: new Date().toISOString()
-  },
-  {
-    id: '2',
-    type: 'update',
-    user: 'Marcelo',
-    timestamp: new Date().toISOString()
-  }
-]
-
-export default function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method === 'GET') {
     try {
-      // const query = `SELECT * from Event`;
-      // const result = await db.query(query);
-      // console.log(result)
-      res.status(200).json(fake);
+      res.status(200).json(await requestData());
     }
     catch(e) {
       res.status(500);  
@@ -30,4 +12,10 @@ export default function handler(req, res) {
   else {
     res.status(404);
   }
+}
+
+async function requestData() {
+  const query = `SELECT * from Event`;
+  const result = await db.query(query);
+  return result;
 }
