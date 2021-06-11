@@ -3,24 +3,10 @@ import Head from 'next/head'
 import { Table } from 'evergreen-ui'
 
 export async function getStaticProps() {
-  return {
-    props: {
-      events: [
-        {
-          id: '1',
-          type: 'create',
-          user: 'Jared',
-          timestamp: new Date().toISOString()
-        },
-        {
-          id: '2',
-          type: 'update',
-          user: 'Marcelo',
-          timestamp: new Date().toISOString()
-        }
-      ]
-    }
-  }
+  const req = await fetch('http://localhost:3000/api/test')
+  const events = await req.json()
+
+  return { props: { events } }
 }
 
 export default class extends React.Component {
